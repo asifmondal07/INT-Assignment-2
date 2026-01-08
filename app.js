@@ -11,6 +11,5 @@ app.use('/api',emailRouter)
 
 
 app.listen(port,()=>{
-    console.log("Server started ",port),
-    console.log("Api key : " ,config.openAiKey)
+    console.log("Server started ",port)
 })
