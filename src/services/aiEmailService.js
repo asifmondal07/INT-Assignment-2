@@ -16,7 +16,7 @@ Keep it concise and polite.
 
   try {
     const response = await axios.post(
-      'https://api.openai.com/v1/chat/completions',
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${config.geminiApiKey}`,
       {
         model: 'gpt-4o-mini',
         messages: [{ role: 'user', content: prompt }]
@@ -35,7 +35,7 @@ Keep it concise and polite.
     };
   } catch (error) {
     console.error(
-      'OpenAI Error:',
+      "Gemini API Error:",
       error.response?.data || error.message
     );
     throw error;
