@@ -2,15 +2,15 @@ import generateEmail from "../services/aiEmailService.js";
 
 const generateEmailController = async (req, res) => {
   try {
-    const { purpose, recipient_name, tone } = req.body;
+    const { purpose, recipientName, tone } = req.body;
 
-    if (!purpose || !recipient_name || !tone) {
+    if (!purpose || !recipientName || !tone) {
       return res.status(400).json({ error: 'All fields are required' });
     }
 
     const result = await generateEmail(
       purpose,
-      recipient_name,
+      recipientName,
       tone
     );
 

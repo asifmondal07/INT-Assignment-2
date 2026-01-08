@@ -1,5 +1,5 @@
-import axios from 'axios';
-import config from '../../config.js';
+import axios from "axios";
+import config from "../../config.js";
 
 const generateEmail = async (purpose, recipientName, tone) => {
   const prompt = `
@@ -16,21 +16,23 @@ Keep it concise and polite.
 
   try {
     const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${config.geminiApiKey}`,
+      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${config.geminiApiKey}`,
       {
-        model: 'gpt-4o-mini',
-        messages: [{ role: 'user', content: prompt }]
+        contents: [
+          {
+            parts: [{ text: prompt }]
+          }
+        ]
       },
       {
         headers: {
-          Authorization: `Bearer ${config.openAiKey}`,
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         }
       }
     );
 
     return {
-      email: response.data.choices[0].message.content,
+      email: response.data.candidates[0].content.parts[0].text,
       responseTimeMs: Date.now() - startTime
     };
   } catch (error) {
@@ -42,5 +44,4 @@ Keep it concise and polite.
   }
 };
 
-
-export default generateEmail
+export default generateEmail;
