@@ -29,8 +29,6 @@ Express.js
 
 Axios
 
-OpenAI API
-
 dotenv
 
 nodemon
@@ -40,7 +38,7 @@ nodemon
 
 create .env file : 
 
-OPENAI_API_KEY=your_openai_api_key_here
+GEMINI_API_KEY=your_openai_api_key_here
 PORT=1000
 
 
@@ -52,10 +50,10 @@ method POST(localhost:1000/api/generate-email)
 
 req-boady
 row : 
-    {
-  "purpose": "Account activation",
-  "recipient_name": "John",
-  "tone": "professional"
+   {
+  "purpose": "Order delivery delay",
+  "recipientName": "John",
+  "tone": "apologetic"
 }
 
 
